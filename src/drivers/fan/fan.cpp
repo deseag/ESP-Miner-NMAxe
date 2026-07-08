@@ -80,18 +80,6 @@ uint16_t measure_fan_rpm_for_duration(fan_init_t init_param, float speed, uint32
 }
 
 bool guess_fan_polarity(fan_init_t init_param) {
-    uint16_t rpm_50 = 0, rpm_100 = 0;
-
-    // test at 50% speed
-    rpm_50 = measure_fan_rpm_for_duration(init_param, 0.5, 5000);
-    LOG_W("Fan speed at 50%% -> %d rpm", rpm_50);
-
-    // test at 100% speed
-    rpm_100 = measure_fan_rpm_for_duration(init_param, 1.0, 5000);
-    LOG_W("Fan speed at 100%% -> %d rpm", rpm_100);
-    
-    // Determine polarity
-    bool invert = (0.9 * rpm_100) <= rpm_50;
-
-    return invert;
+    LOG_W("Fan test bypassed for custom 1150 cooler!");
+    return false; 
 }
